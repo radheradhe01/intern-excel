@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Time Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-clock"></i> Work Time Tracker</h1>
+            <p class="subtitle">Track your daily work hours with ease</p>
+        </header>
+
+        <div class="current-time">
+            <div class="time-display">
+                <span id="current-time">--:--:--</span>
+                <span id="current-date">--</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="time-buttons">
+                <div class="button-group">
+                    <button id="inTimeBtn" class="time-btn primary" onclick="updateTime('inTime')">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>In Time</span>
+                    </button>
+                    <div class="time-display-small" id="inTimeDisplay">Not set</div>
+                </div>
+
+                <div class="button-group">
+                    <button id="startBreakBtn" class="time-btn secondary" onclick="updateTime('startBreak')">
+                        <i class="fas fa-coffee"></i>
+                        <span>Start Break</span>
+                    </button>
+                    <div class="time-display-small" id="startBreakDisplay">Not set</div>
+                </div>
+
+                <div class="button-group">
+                    <button id="endBreakBtn" class="time-btn secondary" onclick="updateTime('endBreak')">
+                        <i class="fas fa-play"></i>
+                        <span>End Break</span>
+                    </button>
+                    <div class="time-display-small" id="endBreakDisplay">Not set</div>
+                </div>
+
+                <div class="button-group">
+                    <button id="outTimeBtn" class="time-btn danger" onclick="updateTime('outTime')">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Out Time</span>
+                    </button>
+                    <div class="time-display-small" id="outTimeDisplay">Not set</div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="previewBtn" class="action-btn preview" onclick="showPreview()">
+                    <i class="fas fa-eye"></i>
+                    Preview
+                </button>
+                <button id="downloadBtn" class="action-btn download" onclick="downloadExcel()">
+                    <i class="fas fa-download"></i>
+                    Download Excel
+                </button>
+            </div>
+        </div>
+
+        <div class="today-summary">
+            <h3>Today's Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <span class="label">Date:</span>
+                    <span id="summaryDate">--</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Total Hours:</span>
+                    <span id="summaryHours">--</span>
+                </div>
+                <div class="summary-item">
+                    <span class="label">Break Time:</span>
+                    <span id="summaryBreak">--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview Modal -->
+        <div id="previewModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Time Sheet Preview</h2>
+                    <span class="close" onclick="closePreview()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="previewContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
